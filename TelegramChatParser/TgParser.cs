@@ -39,18 +39,11 @@ namespace E2.Utils
 
         public TgParser(string inputHtmlPath, string csvFilePath, bool verbose = false, bool append = false)
         {
-            if (Append == true && !File.Exists(CsvFilePath))
+            if (append == true && !File.Exists(csvFilePath))
             {
-                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Warning: Csv file not exists, Creating new file...");
-                Console.BackgroundColor = ConsoleColor.Black;
-            }
-
-            if (!File.Exists(inputHtmlPath))
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error: inputHtml dose not exists! aborting...");
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
             Verbose = verbose;
@@ -107,9 +100,9 @@ namespace E2.Utils
             }
             catch (Exception e)
             {
-                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Exception thrown: \nMessage -> {e.Message}\nStackTrace -> {e.StackTrace}");
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
             return messagesStack.ToList();
